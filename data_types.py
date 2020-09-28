@@ -18,6 +18,7 @@ class video():
         """
 
         """
+        self.filepath = filepath
         self.cap = cv2.VideoCapture(filepath)
         self.framerate = self.cap.get(cv2.CAP_PROP_FPS)
         self.framelength = 1/self.framerate

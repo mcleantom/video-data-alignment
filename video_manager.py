@@ -6,7 +6,6 @@ Created on Thu Sep 24 15:04:25 2020
 """
 import numpy as np
 import pandas as pd
-from multiprocessing import Process
 
 class video_manager():
     """
@@ -30,15 +29,8 @@ class video_manager():
         """
         plot_manager.create_plot_area()
         
-        procs = []
-        
         for frame, time in enumerate(self.timeline["Time"]):
-            proc = Process(target=self.render_frame, args=(frame, time, plot_manager))
-            procs.append(proc)
-            proc.start()
-        
-        for proc in procs:
-            proc.join()
+            self.render_frame(frame, time, plot_manager)
     
     def render_frame(self, frame, time, plot_manager):
         """
